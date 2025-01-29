@@ -15,6 +15,13 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        // $user->teams()->attach(1);
+        return $user->load('teams');
+        $user->posts()->create([
+            'title' => 'My First Post',
+            'content' => 'This is my first post content.',
+        ]);
+
         return view('user', ['user' => $user]);
     }
 }
